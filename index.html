@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Enigma César – Decifre “DOVRKNY”</title>
+  <title>Enigma César – Cifre “televisao”</title>
   <style>
     body {
       display: flex;
@@ -27,11 +27,12 @@
       font-size: 60px;
       color: #c00;
       transition: color 0.3s;
+      margin-bottom: 16px;
     }
     .unlocked {
       color: #0a0;
     }
-    .cipher {
+    .plaintext {
       font-family: monospace;
       font-size: 20px;
       background: #f7f7f7;
@@ -47,7 +48,7 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       margin-bottom: 12px;
-      text-transform: lowercase;
+      text-transform: uppercase;
       text-align: center;
     }
     button {
@@ -81,24 +82,25 @@
   <div class="container">
     <div id="lockIcon" class="lock">🔒</div>
     <h2>Enigma César</h2>
-    <p>Esta palavra foi cifrada com César (chave 10):</p>
-    <div class="cipher">DOVRKNY</div>
-    <p>Decifre para descobrir o texto original:</p>
-    <input type="text" id="answer" placeholder="digite aqui" />
+    <p>Cifre esta palavra com César (chave 10):</p>
+    <div class="plaintext">televisao</div>
+    <p>Digite o texto cifrado:</p>
+    <input type="text" id="answer" placeholder="SEU CÓDIGO" maxlength="10"/>
     <br/>
     <button onclick="checkAnswer()">Desbloquear</button>
     <p id="message">
-      🎉 Parabéns! A palavra é <b>telhado</b>.<br/>
-      <a href="https://eng-pablo-tec.github.io/enigma5" target="_blank">Próximo Enigma</a>
+      🎉 Parabéns! Você cifrou corretamente.<br/>
+      <a href="https://eng-pablo-tec.github.io/enigma6" target="_blank">Próximo Enigma</a>
     </p>
   </div>
 
   <script>
     function checkAnswer() {
-      const user = document.getElementById('answer').value.trim().toLowerCase();
+      const user = document.getElementById('answer').value.trim().toUpperCase();
       const icon = document.getElementById('lockIcon');
       const msg  = document.getElementById('message');
-      if (user === 'telhado') {
+      // "televisao" cifrado com chave 10 → "DOVOFSCKY"
+      if (user === 'DOVOFSCKY') {
         icon.textContent = '🔓';
         icon.classList.add('unlocked');
         setTimeout(() => msg.style.display = 'block', 300);
